@@ -1,6 +1,3 @@
-// templates/LandingLayout.jsx
-// Navbar fija + slot de contenido para páginas públicas.
-
 import { IcShield } from "../atoms/Icons";
 
 function Navbar({ stats }) {

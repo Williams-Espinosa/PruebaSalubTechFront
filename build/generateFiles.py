@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-# build/generateFiles.py — genera bitacora.xlsx y reporte_auditoria.pdf
-# Uso: python3 build/generateFiles.py --out build/tmp
-
 import argparse, os
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
@@ -18,7 +14,6 @@ parser.add_argument("--out", default="build/tmp")
 args = parser.parse_args()
 os.makedirs(args.out, exist_ok=True)
 
-# ── DATA ─────────────────────────────────────────────────────────────────────
 BIT_LOGS = [
     ("Login Exitoso",  "Admin HR (Elena)", "29/01/26 08:30:12", "SUCCESS"),
     ("Edición Perfil", "Admin HR (Elena)", "29/01/26 09:15:44", "SUCCESS"),
@@ -54,7 +49,6 @@ def thin_border(ws, r1, r2, c1, c2):
     for row in ws.iter_rows(min_row=r1, max_row=r2, min_col=c1, max_col=c2):
         for cell in row: cell.border = b
 
-# ── XLSX ─────────────────────────────────────────────────────────────────────
 wb = Workbook()
 
 def make_sheet(ws, title_text, headers, widths, rows, color_col=None, color_fn=None):
@@ -128,7 +122,7 @@ story = []
 hdr_data = [[
     Paragraph("<b><font color='#3D5BF5' size=18>SALUDTECH</font></b><br/><font color='#8C93AA' size=8>HOSPITAL MANAGEMENT SYSTEM</font>", ss["Normal"]),
     Paragraph("<font color='#8C93AA' size=8>REPORTE DE AUDITORÍA</font><br/><b><font color='#0F1B3D' size=10>Auditoría &amp; Desempeño</font></b><br/><font color='#8C93AA' size=8>29 de Enero, 2026</font>",
-              sty("rh", fontName="Helvetica", fontSize=9, alignment=2))
+            sty("rh", fontName="Helvetica", fontSize=9, alignment=2))
 ]]
 ht = Table(hdr_data, colWidths=[3.5*inch,3.5*inch])
 ht.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),BLUE_LC),("TOPPADDING",(0,0),(-1,-1),14),("BOTTOMPADDING",(0,0),(-1,-1),14),("LEFTPADDING",(0,0),(0,-1),16),("RIGHTPADDING",(1,0),(1,-1),16)]))
@@ -184,4 +178,4 @@ story.append(Paragraph("<font color='#8C93AA' size=7>© 2026 HospTrack Systems �
     sty("ft",fontName="Helvetica",fontSize=7,textColor=SOFT_C,alignment=1)))
 
 doc.build(story)
-print(f"✅ PDF:  {pdf_path}")
+print(f"PDF:  {pdf_path}")
