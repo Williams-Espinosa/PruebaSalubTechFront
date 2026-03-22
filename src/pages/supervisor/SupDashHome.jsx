@@ -28,7 +28,7 @@ export default function SupDashHome() {
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
       <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:24 }}>
         <div>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:22, fontWeight:800 }}>Panel de Control General</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800 }}>Panel de Control General</div>
           <div style={{ fontSize:13, color:"var(--text-mid)", marginTop:4 }}>Estado global del hospital y personal activo.</div>
         </div>
         <div style={{ display:"flex", alignItems:"center", gap:8, background:"var(--blue-light)", borderRadius:"var(--radius-sm)", padding:"10px 16px", fontSize:13, fontWeight:600, color:"var(--blue)" }}>
@@ -40,7 +40,7 @@ export default function SupDashHome() {
           <div key={i} style={{ background:"#fff", borderRadius:"var(--radius-sm)", padding:"24px 28px", boxShadow:"var(--shadow-sm)", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
             <div>
               <div style={{ fontSize:12, color:"var(--text-mid)", marginBottom:6 }}>{s.label}</div>
-              <div style={{ fontFamily:"'Syne',sans-serif", fontSize:28, fontWeight:800 }}>{s.val}</div>
+              <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:28, fontWeight:800 }}>{s.val}</div>
               <div style={{ fontSize:11.5, fontWeight:600, marginTop:4, color:s.delta.startsWith("↑")?"var(--green)":"var(--text-soft)" }}>{s.delta}</div>
             </div>
             <div style={{ width:52, height:52, borderRadius:14, background:s.bg, display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
@@ -51,7 +51,7 @@ export default function SupDashHome() {
       </div>
       <div style={{ display:"grid", gridTemplateColumns:"1fr 320px", gap:20 }}>
         <div style={{ background:"#fff", borderRadius:"var(--radius-sm)", padding:28, boxShadow:"var(--shadow-sm)" }}>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:16, fontWeight:700, display:"flex", alignItems:"center", gap:8, marginBottom:20 }}><IcActivity s={18}/> Tendencia de Ocupación</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:16, fontWeight:700, display:"flex", alignItems:"center", gap:8, marginBottom:20 }}><IcActivity s={18}/> Tendencia de Ocupación</div>
           <div style={{ display:"flex", gap:8 }}>
             <div style={{ display:"flex", flexDirection:"column", justifyContent:"space-between", height:220, padding:"0 10px 20px 0" }}>
               {[100,75,50,25,0].map(v => <span key={v} style={{ fontSize:11, color:"var(--text-soft)" }}>{v}</span>)}
@@ -65,7 +65,7 @@ export default function SupDashHome() {
           </div>
         </div>
         <div style={{ background:"#fff", borderRadius:"var(--radius-sm)", padding:24, boxShadow:"var(--shadow-sm)" }}>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:15, fontWeight:700, marginBottom:16 }}>Personal en Turno</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:15, fontWeight:700, marginBottom:16 }}>Personal en Turno</div>
           {SUP_STAFF.map(s => (
             <div key={s.name} style={{ display:"flex", alignItems:"center", gap:12, padding:"12px 0", borderBottom:"1px solid var(--border)", cursor:"pointer" }}>
               <div style={{ width:38, height:38, borderRadius:"50%", background:"var(--gray-bg)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>

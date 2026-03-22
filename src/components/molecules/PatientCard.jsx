@@ -1,10 +1,6 @@
-// molecules/PatientCard.jsx
 import Badge from "../atoms/Badge";
 import { IcArrow } from "../atoms/Icons";
 
-/**
- * Tarjeta de paciente usada en el Dashboard de enfermero.
- */
 export default function PatientCard({ patient, onAtender }) {
   const { name, dx, bed, priority, age, sex } = patient;
   return (
@@ -19,7 +15,7 @@ export default function PatientCard({ patient, onAtender }) {
         <Badge variant={priority}>Prioridad {priority}</Badge>
         <span style={{ fontSize:12, color:"var(--text-soft)" }}>{bed}</span>
       </div>
-      <div style={{ fontFamily:"'Syne',sans-serif", fontSize:17, fontWeight:700, marginBottom:4 }}>{name}</div>
+      <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:17, fontWeight:700, marginBottom:4 }}>{name}</div>
       <div style={{ fontSize:13, color:"var(--text-mid)", marginBottom:14 }}>{dx}</div>
       <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between" }}>
         <div style={{ display:"flex", gap:6 }}>

@@ -20,7 +20,7 @@ export default function PrivacyPage({ onBack }) {
             <div style={{ width:52, height:52, borderRadius:14, background:"var(--blue-light)", display:"inline-flex", alignItems:"center", justifyContent:"center", marginBottom:20 }}>
               <IcShield/>
             </div>
-            <h1 style={{ fontFamily:"'Syne',sans-serif", fontSize:30, fontWeight:800 }}>Políticas de Privacidad</h1>
+            <h1 style={{ fontFamily:"'TuFuente',sans-serif", fontSize:30, fontWeight:800 }}>Políticas de Privacidad</h1>
             <p style={{ fontSize:13, color:"var(--text-soft)", marginTop:8 }}>Última actualización: 18 de febrero de 2026</p>
           </div>
 
@@ -28,7 +28,7 @@ export default function PrivacyPage({ onBack }) {
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:32, marginBottom:32 }}>
             {sections.map((s, i) => (
               <div key={i}>
-                <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:14, fontWeight:700, display:"flex", alignItems:"center", gap:8, marginBottom:12 }}>
+                <h3 style={{ fontFamily:"'TuFuente',sans-serif", fontSize:14, fontWeight:700, display:"flex", alignItems:"center", gap:8, marginBottom:12 }}>
                   {s.icon} {s.title}
                 </h3>
                 {s.body && <p style={{ fontSize:13.5, lineHeight:1.75, color:"var(--text-mid)" }}>{s.body}</p>}
@@ -37,7 +37,7 @@ export default function PrivacyPage({ onBack }) {
             ))}
             {/* Contact — full width */}
             <div style={{ gridColumn:"1/-1", textAlign:"center", borderTop:"1px solid var(--border)", paddingTop:32 }}>
-              <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:14, fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginBottom:12 }}>
+              <h3 style={{ fontFamily:"'TuFuente',sans-serif", fontSize:14, fontWeight:700, display:"flex", alignItems:"center", justifyContent:"center", gap:8, marginBottom:12 }}>
                 <IcMail/> 5. Contacto
               </h3>
               <p style={{ fontSize:13.5, color:"var(--text-mid)" }}>Puedes contactarnos en: <a href="mailto:privacidad@saludtech.com" style={{ color:"var(--blue)", fontWeight:500 }}>privacidad@saludtech.com</a></p>

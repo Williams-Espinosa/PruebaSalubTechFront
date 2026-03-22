@@ -1,5 +1,3 @@
-// atoms/Icons.jsx — todos los SVG del sistema en un solo lugar
-
 export const IcUsers        = ({c="white",s=20})=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
 export const IcClip         = ({c="white",s=20})=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>;
 export const IcSteth        = ({c="white",s=20})=><svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="17" cy="17" r="3"/><path d="M5 6h2a2 2 0 0 1 2 2v6a6 6 0 0 0 12 0v-3"/><circle cx="5" cy="6" r="1"/><circle cx="8" cy="6" r="1"/></svg>;

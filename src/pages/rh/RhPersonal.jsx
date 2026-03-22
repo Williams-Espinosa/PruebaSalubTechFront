@@ -68,7 +68,7 @@ export default function RhPersonal() {
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
       <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:24 }}>
         <div>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:22, fontWeight:800 }}>Personal del Hospital</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800 }}>Personal del Hospital</div>
           <div style={{ fontSize:13, color:"var(--text-mid)", marginTop:4 }}>Administra los roles, turnos y altas del equipo médico.</div>
         </div>
         <Button onClick={() => setShowModal(true)}><IcPlus c="white" s={16}/> Registrar Empleado</Button>

@@ -17,7 +17,7 @@ export default function SupEntregaTurno({ onLogout }) {
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
       <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:28 }}>
         <div>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:22, fontWeight:800 }}>Entrega de Turno</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800 }}>Entrega de Turno</div>
           <div style={{ fontSize:13, color:"var(--text-mid)", marginTop:4 }}>Documentación obligatoria para el cierre de guardia.</div>
         </div>
         <div style={{ display:"flex", alignItems:"center", gap:8, background:"var(--blue-light)", borderRadius:"var(--radius-sm)", padding:"10px 16px", fontSize:13, fontWeight:600, color:"var(--blue)" }}>
@@ -37,7 +37,7 @@ export default function SupEntregaTurno({ onLogout }) {
         </div>
 
         <div style={{ background:"#fff", borderRadius:"var(--radius-sm)", padding:24, boxShadow:"var(--shadow-sm)", height:"fit-content" }}>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:14, fontWeight:700, display:"flex", alignItems:"center", gap:8, marginBottom:16, color:"var(--blue)" }}>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:14, fontWeight:700, display:"flex", alignItems:"center", gap:8, marginBottom:16, color:"var(--blue)" }}>
             <IcCheckCircle s={16}/> Checklist de Cierre
           </div>
           {CHECKLIST.map((item,i) => (

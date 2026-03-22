@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 
 /**
- * Countdown timer hook.
- * @param {number} initialSeconds - starting value in seconds (default 6h 45m 12s)
- * @returns {string} formatted "HH : MM : SS"
+ * @param {number} initialSeconds 
+ * @returns {string} 
  */
 export function useTimer(initialSeconds = 6 * 3600 + 45 * 60 + 12) {
   const [secs, setSecs] = useState(initialSeconds);

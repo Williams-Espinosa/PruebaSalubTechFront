@@ -35,7 +35,7 @@ export default function SupRegistros() {
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
       <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:24 }}>
         <div>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:22, fontWeight:800 }}>Registros de Pacientes</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800 }}>Registros de Pacientes</div>
           <div style={{ fontSize:13, color:"var(--text-mid)", marginTop:4 }}>Historial completo y monitoreo de planta.</div>
         </div>
         <button style={{ display:"flex", alignItems:"center", gap:6, padding:"10px 18px", borderRadius:"var(--radius-sm)", background:"#fff", border:"1.5px solid var(--border)", fontSize:13, fontWeight:600, cursor:"pointer" }}>

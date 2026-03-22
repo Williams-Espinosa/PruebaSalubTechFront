@@ -1,9 +1,5 @@
-// molecules/TaskItem.jsx
 import { IcCheck } from "../atoms/Icons";
 
-/**
- * Ítem de tarea pendiente con checkbox interactivo.
- */
 export default function TaskItem({ task, onToggle }) {
   const { cat, time, name, patient, done } = task;
   return (

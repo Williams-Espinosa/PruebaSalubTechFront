@@ -1,14 +1,11 @@
-// organisms/Sidebar.jsx
 import { IcSteth, IcLogout } from "../atoms/Icons";
 
 /**
- * Sidebar organism reutilizable.
- *
- * @param {Array}    items    - [{ id, label, icon: (color)=>JSX }]
- * @param {Array}    sections - [{ label, items }] — para sidebars con grupos (RH)
- * @param {string}   active   - id del ítem activo
- * @param {Function} onChange - (id) => void
- * @param {Function} onLogout - () => void
+ * @param {Array}    items   
+ * @param {Array}    sections 
+ * @param {string}   active   
+ * @param {Function} onChange
+ * @param {Function} onLogout
  */
 export default function Sidebar({ items = [], sections = [], active, onChange, onLogout }) {
   const navItemStyle = isActive => ({
@@ -38,10 +35,10 @@ export default function Sidebar({ items = [], sections = [], active, onChange, o
         <div style={{ width:36, height:36, borderRadius:10, background:"var(--blue)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>
           <IcSteth s={18}/>
         </div>
-        <div style={{ fontFamily:"'Syne',sans-serif", fontSize:15, fontWeight:800 }}>HospTrack</div>
+        <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:15, fontWeight:800 }}>HospTrack</div>
       </div>
 
-      {/* Nav items flat o por secciones */}
+      {}
       <nav style={{ flex:1, display:"flex", flexDirection:"column", gap:4 }}>
         {sections.length > 0
           ? sections.map(sec => (
@@ -56,7 +53,7 @@ export default function Sidebar({ items = [], sections = [], active, onChange, o
         }
       </nav>
 
-      {/* Logout */}
+      {}
       <button onClick={onLogout} style={{ display:"flex", alignItems:"center", gap:8, padding:"10px 12px", borderRadius:"var(--radius-sm)", cursor:"pointer", fontSize:13, fontWeight:600, color:"var(--red)", background:"transparent", border:"none", width:"100%", textAlign:"left", marginTop:8, transition:"background .15s" }}
         onMouseEnter={e=>e.currentTarget.style.background="#FFF5F5"}
         onMouseLeave={e=>e.currentTarget.style.background="transparent"}

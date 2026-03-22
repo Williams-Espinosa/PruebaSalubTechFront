@@ -1,5 +1,3 @@
-// atoms/Badge.jsx
-
 const colors = {
   alta:      { bg:"#FFF5F5", color:"var(--red)"    },
   media:     { bg:"#FFFAF0", color:"#D69E2E"       },
@@ -17,7 +15,6 @@ const colors = {
 };
 
 /**
- * Badge atom reutilizable.
  * @param {string} variant - clave en colors (alta, media, leve, success…)
  */
 export default function Badge({ children, variant = "leve", style = {} }) {

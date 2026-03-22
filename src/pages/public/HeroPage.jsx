@@ -31,7 +31,7 @@ export default function HeroPage({ onStart, onPolicy }) {
           <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:"var(--blue-light)", borderRadius:100, padding:"6px 14px", marginBottom:28, fontSize:12, fontWeight:600, color:"var(--blue)", width:"fit-content" }}>
             <IcShield s={13}/> Sistema Hospitalario
           </div>
-          <h1 style={{ fontFamily:"'Syne',sans-serif", fontSize:"clamp(36px,4vw,56px)", fontWeight:800, lineHeight:1.1, marginBottom:24, animation:"fadeUp .7s .15s ease both" }}>
+          <h1 style={{ fontFamily:"'TuFuente',sans-serif", fontSize:"clamp(36px,4vw,56px)", fontWeight:800, lineHeight:1.1, marginBottom:24, animation:"fadeUp .7s .15s ease both" }}>
             Gestión<br/>Inteligente de<br/><span style={{ color:"var(--blue)" }}>Cambios de<br/>Turno</span>
           </h1>
           <p style={{ fontSize:15, lineHeight:1.7, color:"var(--text-mid)", maxWidth:420, marginBottom:48, animation:"fadeUp .7s .2s ease both" }}>
@@ -45,7 +45,7 @@ export default function HeroPage({ onStart, onPolicy }) {
           >
             <div style={{ width:40, height:40, borderRadius:10, background:"rgba(255,255,255,.2)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}><IcUsers/></div>
             <div style={{ flex:1 }}>
-              <div style={{ fontFamily:"'Syne',sans-serif", fontSize:16, fontWeight:700, color:"#fff" }}>Iniciar Turno</div>
+              <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:16, fontWeight:700, color:"#fff" }}>Iniciar Turno</div>
               <div style={{ fontSize:12, color:"rgba(255,255,255,.7)", marginTop:2 }}>Validación de personal y relevo</div>
             </div>
             <div style={{ width:32, height:32, borderRadius:"50%", background:"rgba(255,255,255,.2)", display:"flex", alignItems:"center", justifyContent:"center" }}><IcArrow/></div>

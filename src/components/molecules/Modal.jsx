@@ -1,9 +1,3 @@
-// molecules/Modal.jsx
-
-/**
- * Modal genérico con overlay.
- * Cierra al hacer clic fuera si onClose está definido.
- */
 export default function Modal({ title, subtitle, onClose, children }) {
   return (
     <div
@@ -16,7 +10,7 @@ export default function Modal({ title, subtitle, onClose, children }) {
             ×
           </button>
         )}
-        {title    && <div style={{ fontFamily:"'Syne',sans-serif", fontSize:20, fontWeight:800, marginBottom:4 }}>{title}</div>}
+        {title    && <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:20, fontWeight:800, marginBottom:4 }}>{title}</div>}
         {subtitle && <div style={{ fontSize:13, color:"var(--text-mid)", marginBottom:24 }}>{subtitle}</div>}
         {children}
       </div>

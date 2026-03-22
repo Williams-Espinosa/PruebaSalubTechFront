@@ -41,7 +41,7 @@ export default function RhAuditoria() {
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
       <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:24 }}>
         <div>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:22, fontWeight:800 }}>Auditoría &amp; Desempeño</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800 }}>Auditoría &amp; Desempeño</div>
           <div style={{ fontSize:13, color:"var(--text-mid)", marginTop:4 }}>Supervisión de incidentes y control de calidad clínica.</div>
         </div>
         <div style={{ display:"flex", background:"#fff", border:"1.5px solid var(--border)", borderRadius:"var(--radius-sm)", padding:4 }}>
@@ -89,7 +89,7 @@ export default function RhAuditoria() {
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r=".5" fill="var(--orange)"/></svg>
                       </div>
                       <div>
-                        <div style={{ fontFamily:"'Syne',sans-serif", fontSize:15, fontWeight:700 }}>{inc.patient}</div>
+                        <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:15, fontWeight:700 }}>{inc.patient}</div>
                         <div style={{ fontSize:11, color:"var(--text-soft)", marginTop:1 }}>{inc.pid}</div>
                       </div>
                     </div>

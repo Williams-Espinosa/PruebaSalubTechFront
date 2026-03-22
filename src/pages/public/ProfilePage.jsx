@@ -17,7 +17,7 @@ export default function ProfilePage({ onSelect }) {
           <div style={{ width:64, height:64, borderRadius:18, background:"var(--blue)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 8px 24px rgba(61,91,245,.35)" }}>
             <IcSteth s={28}/>
           </div>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:26, fontWeight:800 }}>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:26, fontWeight:800 }}>
             Salud<span style={{ color:"var(--blue)" }}>Tech</span>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default function ProfilePage({ onSelect }) {
                 <div style={{ width:52, height:52, borderRadius:14, background:"rgba(255,255,255,.2)", display:"flex", alignItems:"center", justifyContent:"center" }}>{p.icon}</div>
               </div>
               <div style={{ padding:24, textAlign:"center" }}>
-                <div style={{ fontFamily:"'Syne',sans-serif", fontSize:18, fontWeight:700, marginBottom:8 }}>{p.name}</div>
+                <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:18, fontWeight:700, marginBottom:8 }}>{p.name}</div>
                 <div style={{ fontSize:13, color:"var(--text-mid)", lineHeight:1.6 }}>{p.desc}</div>
               </div>
             </div>

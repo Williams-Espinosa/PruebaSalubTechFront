@@ -1,7 +1,3 @@
-// constants/mockData.js
-// Reemplaza estos arrays con llamadas reales a tu API cuando conectes el backend.
-
-// ── Enfermero ────────────────────────────────────────────────────────────────
 export const PATIENTS = [
   { id:1, name:"Carlos Rodríguez",  dx:"Post-op Apendicitis",  bed:"Cama A-102", priority:"media", age:45, sex:"M" },
   { id:2, name:"María Elena Garza", dx:"Insuficiencia Renal",  bed:"Cama B-204", priority:"alta",  age:68, sex:"F" },
@@ -14,7 +10,6 @@ export const TASKS_INIT = [
   { id:3, cat:"CURACIÓN",   time:"16:00", name:"Curación de herida quirúrgica",patient:"María Elena Garza • Cama A-102",done:false },
 ];
 
-// ── Supervisor ───────────────────────────────────────────────────────────────
 export const SUP_STAFF = [
   { name:"Dra. Elena Martínez", role:"Médico Residente" },
   { name:"Enf. Ricardo Soto",   role:"Enfermería UCI"   },
@@ -35,7 +30,6 @@ export const SUP_PATIENTS = [
   { name:"Elena Soria",     age:53, bed:"305-B", dx:"Recuperación Neumonía",  status:"estable", statusLabel:"Estable",     priority:"Baja",  last:"hace 30 min"  },
 ];
 
-// ── RH ───────────────────────────────────────────────────────────────────────
 export const RH_STAFF = [
   { name:"Dra. Elena Martínez", id:"MARE904001HOFLRS01", role:"supervisor", spec:"Cardiología",      turno:"Matutino",   activo:true  },
   { name:"Lic. Ricardo Gómez",  id:"GORR921215HOFLRS02", role:"enfermero",  spec:"Urgencias",         turno:"Nocturno",   activo:true  },

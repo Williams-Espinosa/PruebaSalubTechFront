@@ -69,7 +69,7 @@ export default function LoginPage({ role, onBack, onLogin }) {
               <IcSteth s={28}/>
             </div>
           </div>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:22, fontWeight:800, color:"#fff" }}>SaludTech</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800, color:"#fff" }}>SaludTech</div>
           <div style={{ fontSize:13, color:"rgba(255,255,255,.75)", marginTop:6 }}>{ROLE_LABELS[role]}</div>
         </div>
 

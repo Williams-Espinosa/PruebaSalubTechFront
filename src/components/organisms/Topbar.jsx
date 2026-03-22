@@ -1,9 +1,7 @@
-// organisms/Topbar.jsx
 import { IcSearch } from "../atoms/Icons";
 import Avatar from "../atoms/Avatar";
 
 /**
- * Barra superior de los dashboards.
  * @param {string} userName
  * @param {string} userRole
  * @param {string} searchPlaceholder
@@ -17,7 +15,7 @@ export default function Topbar({ userName = "Usuario", userRole = "Rol", searchP
       </div>
       <div style={{ display:"flex", alignItems:"center", gap:12 }}>
         <div style={{ textAlign:"right" }}>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:13, fontWeight:700 }}>{userName}</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:13, fontWeight:700 }}>{userName}</div>
           <div style={{ fontSize:10, fontWeight:600, letterSpacing:1, textTransform:"uppercase", color:"var(--text-soft)" }}>{userRole}</div>
         </div>
         <Avatar name={userName}/>

@@ -31,12 +31,12 @@ export default function RhDashHome() {
   ];
   return (
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
-      <div style={{ fontFamily:"'Syne',sans-serif", fontSize:22, fontWeight:800, marginBottom:24 }}>Resumen General</div>
+      <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800, marginBottom:24 }}>Resumen General</div>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:16, marginBottom:24 }}>
         {stats.map((s,i) => (
           <div key={i} style={{ background:"#fff", borderRadius:"var(--radius-sm)", padding:"22px 20px", boxShadow:"var(--shadow-sm)" }}>
             <div style={{ width:44, height:44, borderRadius:12, background:s.cls, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:14 }}>{s.icon}</div>
-            <div style={{ fontFamily:"'Syne',sans-serif", fontSize:28, fontWeight:800, marginBottom:4 }}>{s.val}</div>
+            <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:28, fontWeight:800, marginBottom:4 }}>{s.val}</div>
             <div style={{ fontSize:13, color:"var(--text-mid)" }}>{s.label}</div>
             <div style={{ fontSize:11, fontWeight:600, marginTop:3, color: s.up===true?"var(--green)":s.up===false?"var(--red)":"var(--text-soft)" }}>
               {s.delta}
@@ -46,7 +46,7 @@ export default function RhDashHome() {
       </div>
       <div style={{ display:"grid", gridTemplateColumns:"1fr 300px", gap:20 }}>
         <div style={{ background:"#fff", borderRadius:"var(--radius-sm)", padding:28, boxShadow:"var(--shadow-sm)" }}>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:16, fontWeight:700, marginBottom:4 }}>Actividad Semanal</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:16, fontWeight:700, marginBottom:4 }}>Actividad Semanal</div>
           <div style={{ fontSize:12, color:"var(--text-soft)", marginBottom:12 }}>Comparativa entre incidentes y altas médicas</div>
           <div style={{ display:"flex", gap:16, marginBottom:12 }}>
             {[["var(--blue)","Altas"],["var(--red)","Incidentes"]].map(([c,l]) => <div key={l} style={{ display:"flex", alignItems:"center", gap:6, fontSize:12, color:"var(--text-mid)" }}><div style={{ width:10, height:10, borderRadius:"50%", background:c }}/>{l}</div>)}
@@ -57,7 +57,7 @@ export default function RhDashHome() {
           </div>
         </div>
         <div style={{ background:"#fff", borderRadius:"var(--radius-sm)", padding:24, boxShadow:"var(--shadow-sm)" }}>
-          <div style={{ fontFamily:"'Syne',sans-serif", fontSize:15, fontWeight:700, marginBottom:16 }}>Alertas Recientes</div>
+          <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:15, fontWeight:700, marginBottom:16 }}>Alertas Recientes</div>
           {RH_ALERTS.map((a,i) => (
             <div key={i} style={{ display:"flex", alignItems:"flex-start", gap:12, padding:"12px 0", borderBottom:"1px solid var(--border)" }}>
               <div style={{ width:36, height:36, borderRadius:10, background:"var(--blue-light)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}><IcClock c="var(--blue)" s={16}/></div>
