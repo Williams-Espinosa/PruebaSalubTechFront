@@ -1,58 +1,113 @@
 const globalStyle = `
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --blue:        #3D5BF5;
-    --blue-dark:   #2A44D6;
-    --blue-light:  #EEF1FE;
-    --orange:      #F5813D;
-    --red:         #E53E3E;
-    --green:       #38A169;
-    --green-light: #F0FFF4;
-    --gray-bg:     #F0F2F5;
-    --white:       #ffffff;
-    --text-dark:   #0F1B3D;
-    --text-mid:    #4A5578;
-    --text-soft:   #8C93AA;
-    --border:      #E2E5EF;
-    --shadow-sm:   0 2px 8px  rgba(15,27,61,.07);
-    --shadow-md:   0 8px 32px rgba(15,27,61,.12);
-    --shadow-lg:   0 20px 60px rgba(15,27,61,.16);
-    --radius:      20px;
-    --radius-sm:   12px;
-  }
+:root {
+  /* Vibrant & Ocean Palette */
+  --blue:        #2563eb;
+  --blue-dark:   #1d4ed8;
+  --blue-light:  #dbeafe;
+  --orange:      #f97316;
+  --red:         #ef4444;
+  --green:       #10b981;
+  --green-light: #d1fae5;
+  
+  /* Modern Backgrounds */
+  --gray-bg:     #f8fafc;
+  --white:       #ffffff;
+  --glass-bg:    rgba(255, 255, 255, 0.75);
+  --glass-border:rgba(255, 255, 255, 0.5);
+  
+  /* Typography */
+  --text-dark:   #0f172a;
+  --text-mid:    #475569;
+  --text-soft:   #94a3b8;
+  
+  /* Apple/Stripe-like Shadows */
+  --shadow-sm:   0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:   0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:   0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glass:0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  
+  /* Rounded Corners */
+  --radius:      16px;
+  --radius-sm:   10px;
+}
 
-  html, body, #root { height: 100%; }
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
 
-  * { font-family: Arial, Helvetica, sans-serif !important; }
+body {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  background: var(--gray-bg);
+  /* Subtle mesh gradient background */
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.03) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.03) 0, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
 
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--gray-bg);
-    color: var(--text-dark);
-    -webkit-font-smoothing: antialiased;
-  }
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  @keyframes cookieDrop {
-    from { opacity: 0; transform: translateY(60px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes tickAnim {
-    from { opacity: 0; transform: scale(.6); }
-    to   { opacity: 1; transform: scale(1); }
-  }
+button { 
+  font-family: inherit; 
+  cursor: pointer; 
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+button:active {
+  transform: translateY(0);
+}
 
-  .page { animation: fadeIn .3s ease both; }
-  button { font-family: Arial, Helvetica, sans-serif; }
-  input, textarea, select { font-family: Arial, Helvetica, sans-serif; }
+input, textarea, select { 
+  font-family: inherit; 
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--blue-light);
+  border-color: var(--blue);
+}
+
+a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
+a:hover { color: var(--blue); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to   { opacity: 1; backdrop-filter: blur(16px); }
+}
+@keyframes cookieDrop {
+  from { opacity: 0; transform: translateY(60px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes tickAnim {
+  0%   { opacity: 0; transform: scale(.4); }
+  50%  { transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.page { animation: fadeIn .4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Force Outfit globally */
+* { font-family: 'Outfit', system-ui, -apple-system, sans-serif !important; }
 `;
 
 export default globalStyle;
