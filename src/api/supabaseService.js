@@ -29,6 +29,62 @@ export const loginUser = async (email, password) => {
   return user;
 };
 
+// ── CRUD Usuarios ──────────────────────────────────────
+
+export const fetchUsuarios = async () => {
+  const { data, error } = await supabase
+    .from('usuarios')
+    .select('*')
+    .order('nombre_completo');
+
+  if (error) throw error;
+  return data;
+};
+
+export const createUsuario = async ({ nombre_completo, email, password, curp, rol, turno_asignado }) => {
+  const salt = await bcrypt.genSalt(10);
+  const password_hash = await bcrypt.hash(password, salt);
+
+  const { data, error } = await supabase
+    .from('usuarios')
+    .insert([{ nombre_completo, email, password_hash, curp, rol, turno_asignado, activo: true }])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+export const updateUsuario = async (id, campos) => {
+  const updateData = { ...campos };
+
+  // Si se envía una contraseña nueva, hashearla
+  if (updateData.password) {
+    const salt = await bcrypt.genSalt(10);
+    updateData.password_hash = await bcrypt.hash(updateData.password, salt);
+    delete updateData.password;
+  }
+
+  const { data, error } = await supabase
+    .from('usuarios')
+    .update(updateData)
+    .eq('id_usuario', id)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+export const deleteUsuario = async (id) => {
+  const { error } = await supabase
+    .from('usuarios')
+    .delete()
+    .eq('id_usuario', id);
+
+  if (error) throw error;
+};
+
 export const fetchPacientes = async () => {
   const { data, error } = await supabase
     .from('pacientes')
