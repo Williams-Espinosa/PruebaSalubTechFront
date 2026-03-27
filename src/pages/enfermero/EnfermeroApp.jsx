@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import DashboardLayout from "../../components/templates/DashboardLayout";
 import { IcActivity, IcClip, IcSwap } from "../../components/atoms/Icons";
-import { apiFetch } from "../../api/client";
-import { API } from "../../api/config";
-import { adaptPaciente, adaptTarea } from "../../api/adapters";
-import { PATIENTS, TASKS_INIT } from "../../constants/mockData";
 import { fetchPacientes, fetchTareas, toggleTareaEstado } from "../../api/supabaseService";
 
 import DashboardHome    from "./DashboardHome";
@@ -53,10 +49,9 @@ export default function EnfermeroApp({ onLogout, user }) {
         setTasks(tareas);
         setSelectedPatientId(pacs[0]?.id ?? null);
       } catch (e) {
-        console.warn("Usando datos mock:", e.message);
-        setPatients(PATIENTS);
-        setTasks(TASKS_INIT);
-        setSelectedPatientId(PATIENTS[0]?.id ?? 1);
+        console.error("Error cargando datos:", e.message);
+        setPatients([]);
+        setTasks([]);
       } finally {
         setLoading(false);
       }

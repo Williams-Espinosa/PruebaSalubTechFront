@@ -119,3 +119,111 @@ export const toggleTareaEstado = async (id, currentEstado) => {
   if (error) throw error;
   return nuevoEstado;
 };
+
+// ── Notas ──────────────────────────────────────────────
+
+export const fetchNotas = async () => {
+  const { data, error } = await supabase
+    .from('notas')
+    .select('*')
+    .order('fecha_hora', { ascending: false });
+
+  if (error) throw error;
+  return data;
+};
+
+export const createNota = async ({ id_paciente, tipo_nota, descripcion, urgencia, enfermero }) => {
+  const { data, error } = await supabase
+    .from('notas')
+    .insert([{
+      id_paciente,
+      tipo_nota: tipo_nota || 'Nota de evolución',
+      descripcion,
+      urgencia: urgencia || false,
+      enfermero: enfermero || 'Enfermero',
+      fecha_hora: new Date().toISOString(),
+    }])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+// ── Dashboard Stats ────────────────────────────────────
+
+export const fetchDashboardStats = async () => {
+  const [usuarios, pacientes, notasHoy] = await Promise.all([
+    supabase.from('usuarios').select('id_usuario', { count: 'exact', head: true }),
+    supabase.from('pacientes').select('id_paciente', { count: 'exact', head: true }),
+    supabase.from('notas').select('id_nota', { count: 'exact', head: true })
+      .gte('fecha_hora', new Date(new Date().setHours(0,0,0,0)).toISOString()),
+  ]);
+
+  return {
+    totalUsuarios: usuarios.count ?? 0,
+    totalPacientes: pacientes.count ?? 0,
+    notasHoy: notasHoy.count ?? 0,
+  };
+};
+
+// ── Turnos / Entregas ──────────────────────────────────
+
+export const fetchTurnosRecientes = async () => {
+  const { data, error } = await supabase
+    .from('turnos')
+    .select('*, usuarios ( nombre_completo )')
+    .order('hora_inicio', { ascending: false })
+    .limit(10);
+
+  if (error) throw error;
+  return data;
+};
+
+export const createEntregaTurno = async ({ id_usuario, tipo_turno, observaciones }) => {
+  const { data, error } = await supabase
+    .from('turnos')
+    .insert([{
+      id_usuario,
+      tipo_turno,
+      hora_inicio: new Date().toISOString(),
+      estado: 'activo',
+      observaciones,
+    }])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+// ── Supervisor / Medico ────────────────────────────────
+
+export const fetchTurnosParaValidar = async () => {
+  const { data, error } = await supabase
+    .from('turnos')
+    .select('*, usuarios ( nombre_completo, rol )')
+    .eq('estado', 'activo') // O 'finalizado' si hay un estado intermedio
+    .order('hora_inicio', { ascending: false });
+
+  if (error) throw error;
+  return data;
+};
+
+export const validarTurno = async (id, firma) => {
+  const { data, error } = await supabase
+    .from('turnos')
+    .update({ 
+      estado: 'validado', 
+      validado_por: firma,
+      hora_fin: new Date().toISOString() 
+    })
+    .eq('id_turno', id)
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+

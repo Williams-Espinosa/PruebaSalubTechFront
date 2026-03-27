@@ -1,15 +1,12 @@
 import { useState } from "react";
 import Button from "../../components/atoms/Button";
 import { IcDoc, IcShield, IcCheckCircle, IcCheck } from "../../components/atoms/Icons";
-import { apiFetch } from "../../api/client";
-import { API } from "../../api/config";
-import { adaptPaciente } from "../../api/adapters";
-import { PATIENTS } from "../../constants/mockData";
+import { createNota } from "../../api/supabaseService";
 
 const PRIORITY_COLOR = { alta:"var(--red)", media:"#D69E2E", baja:"var(--green)" };
 
-export default function RegistrosPage({ patients = PATIENTS, initialPatientId }) {
-  const norm          = patients.map(p => p.id_paciente ? adaptPaciente(p) : p);
+export default function RegistrosPage({ patients = [], initialPatientId }) {
+  const norm          = patients;
   const firstId       = initialPatientId ?? norm[0]?.id;
 
   const [selId,   setSelId]   = useState(firstId);
@@ -17,7 +14,7 @@ export default function RegistrosPage({ patients = PATIENTS, initialPatientId })
   const [tipo,    setTipo]    = useState("");
   const [desc,    setDesc]    = useState("");
   const [saving,  setSaving]  = useState(false);
-  const [msg,     setMsg]     = useState(null); 
+  const [msg,     setMsg]     = useState(null);
 
   const patient  = norm.find(p => p.id === selId) || norm[0] || {};
   const initials = (patient.name||"?").split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
@@ -28,14 +25,11 @@ export default function RegistrosPage({ patients = PATIENTS, initialPatientId })
     if (desc.length < 10) return;
     setSaving(true);
     try {
-      await apiFetch(API.NOTAS.CREATE, {
-        method: "POST",
-        body: JSON.stringify({
-          id_paciente:  selId,
-          tipo_evento:  tipo || "Nota de evolución",
-          descripcion:  desc,
-          urgencia:     urgency === "alto",
-        }),
+      await createNota({
+        id_paciente:  selId,
+        tipo_nota:    tipo || "Nota de evolución",
+        descripcion:  desc,
+        urgencia:     urgency === "alto",
       });
       setTipo(""); setDesc(""); setUrgency("bajo");
       showMsg("ok", "Nota guardada exitosamente en la bitácora");
@@ -48,7 +42,7 @@ export default function RegistrosPage({ patients = PATIENTS, initialPatientId })
 
   return (
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
-      {}
+      {/* Header */}
       <div style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between", marginBottom:28 }}>
         <div>
           <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:22, fontWeight:800 }}>Registrar Incidentes y Notas</div>
@@ -59,7 +53,7 @@ export default function RegistrosPage({ patients = PATIENTS, initialPatientId })
         </button>
       </div>
 
-      {}
+      {/* Messages */}
       {msg && (
         <div style={{ borderRadius:"var(--radius-sm)", padding:"12px 16px", marginBottom:20, fontSize:13, fontWeight:600, display:"flex", alignItems:"center", gap:8, background: msg.type==="ok"?"var(--green-light)":"#FFF5F5", border:`1px solid ${msg.type==="ok"?"var(--green)":"var(--red)"}`, color: msg.type==="ok"?"var(--green)":"var(--red)" }}>
           {msg.type==="ok" ? <IcCheckCircle c="var(--green)" s={16}/> : "⚠️"} {msg.text}
@@ -67,10 +61,11 @@ export default function RegistrosPage({ patients = PATIENTS, initialPatientId })
       )}
 
       <div style={{ background:"#fff", borderRadius:"var(--radius)", padding:32, boxShadow:"var(--shadow-sm)" }}>
-        {}
+        {/* Patient selector */}
         <div style={{ marginBottom:24 }}>
           <div style={{ fontSize:10, fontWeight:700, letterSpacing:1.2, textTransform:"uppercase", color:"var(--text-soft)", marginBottom:10 }}>Paciente</div>
           <div style={{ display:"flex", gap:10, flexWrap:"wrap" }}>
+            {norm.length === 0 && <div style={{ color:"var(--text-soft)", fontSize:13 }}>No hay pacientes disponibles</div>}
             {norm.map(p => {
               const ini = (p.name||"?").split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
               const sel = p.id === selId;
@@ -80,7 +75,7 @@ export default function RegistrosPage({ patients = PATIENTS, initialPatientId })
                   <div style={{ width:34, height:34, borderRadius:"50%", flexShrink:0, background:sel?"var(--blue)":"var(--gray-bg)", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'TuFuente',sans-serif", fontSize:12, fontWeight:700, color:sel?"#fff":"var(--text-mid)" }}>{ini}</div>
                   <div>
                     <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:13, fontWeight:700, color:sel?"var(--blue)":"var(--text-dark)" }}>{p.name}</div>
-                    <div style={{ fontSize:11, color:"var(--text-soft)", marginTop:1 }}>{p.bed}</div>
+                    <div style={{ fontSize:11, color:"var(--text-soft)", marginTop:1 }}>{p.bed || p.room}</div>
                     <div style={{ display:"flex", alignItems:"center", gap:4, marginTop:2 }}>
                       <span style={{ width:6, height:6, borderRadius:"50%", background:pc, flexShrink:0 }}/>
                       <span style={{ fontSize:10, fontWeight:700, textTransform:"uppercase", letterSpacing:.5, color:pc }}>{p.priority}</span>
@@ -96,14 +91,14 @@ export default function RegistrosPage({ patients = PATIENTS, initialPatientId })
               <div style={{ width:38, height:38, borderRadius:10, background:"var(--blue)", display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'TuFuente',sans-serif", fontSize:14, fontWeight:700, color:"#fff", flexShrink:0 }}>{initials}</div>
               <div>
                 <div style={{ fontFamily:"'TuFuente',sans-serif", fontSize:14, fontWeight:700 }}>{patient.name}</div>
-                <div style={{ fontSize:12, color:"var(--text-mid)", marginTop:2 }}>{patient.bed} • {patient.dx}</div>
+                <div style={{ fontSize:12, color:"var(--text-mid)", marginTop:2 }}>{patient.bed || patient.room} • {patient.dx}</div>
               </div>
               <div style={{ marginLeft:"auto", fontSize:11, color:"var(--text-soft)" }}>Paciente seleccionado</div>
             </div>
           )}
         </div>
 
-        {}
+        {/* Form fields */}
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:20, marginBottom:20 }}>
           <div>
             <label style={{ display:"block", fontSize:10, fontWeight:700, letterSpacing:1.2, textTransform:"uppercase", color:"var(--text-soft)", marginBottom:8 }}>Tipo de Evento</label>

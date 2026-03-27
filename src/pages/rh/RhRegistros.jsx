@@ -1,52 +1,30 @@
 import { useState, useEffect } from "react";
 import { IcDoc, IcClock } from "../../components/atoms/Icons";
-import { apiFetch } from "../../api/client";
-import { API } from "../../api/config";
-import { adaptNota } from "../../api/adapters";
-import { BIT_LOGS } from "../../constants/mockData";
+import { fetchNotas } from "../../api/supabaseService";
 
 export default function RhRegistros() {
-  const [logs,    setLogs]    = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [exporting, setExporting] = useState(false);
+  const [logs,      setLogs]      = useState([]);
+  const [loading,   setLoading]   = useState(true);
 
   useEffect(() => {
     const load = async () => {
       try {
-        const data = await apiFetch(API.NOTAS.LIST);
-        if (Array.isArray(data) && data.length) {
-          setLogs(data.map(n => ({
-            event:  n.tipo_evento  || "Registro",
-            user:   n.enfermero    || "Sistema",
-            ts:     n.fecha_hora   ? new Date(n.fecha_hora).toLocaleString("es-MX") : "",
-            status: n.urgencia     ? "blocked" : "success",
-          })));
-        } else {
-          setLogs(BIT_LOGS);
-        }
-      } catch {
-        setLogs(BIT_LOGS);
+        const data = await fetchNotas();
+        setLogs((data || []).map(n => ({
+          event:  n.tipo_nota     || "Nota Clínica",
+          user:   n.enfermero     || "Sistema",
+          ts:     n.fecha_hora    ? new Date(n.fecha_hora).toLocaleString("es-MX") : "",
+          status: n.urgencia      ? "blocked" : "success",
+        })));
+      } catch (err) {
+        console.error("Error cargando registros:", err);
+        setLogs([]);
       } finally {
         setLoading(false);
       }
     };
     load();
   }, []);
-
-  const handleExportXLS = async () => {
-    setExporting(true);
-    try {
-      const blob = await apiFetch(API.RH.EXPORT_XLS, { blob: true });
-      const url  = URL.createObjectURL(blob);
-      const a    = document.createElement("a");
-      a.href = url; a.download = "Reporte_Personal_RH.xlsx"; a.click();
-      URL.revokeObjectURL(url);
-    } catch (e) {
-      alert("Error exportando: " + e.message);
-    } finally {
-      setExporting(false);
-    }
-  };
 
   return (
     <div style={{ padding:32, animation:"fadeUp .4s .05s ease both" }}>
@@ -59,9 +37,6 @@ export default function RhRegistros() {
           <div style={{ display:"flex", alignItems:"center", gap:6, background:"#fff", border:"1.5px solid var(--border)", borderRadius:"var(--radius-sm)", padding:"8px 14px", fontSize:13, fontWeight:600 }}>
             <IcClock c="var(--text-mid)" s={14}/> {new Date().toLocaleDateString("es-MX",{day:"2-digit",month:"short",year:"numeric"})}
           </div>
-          <button onClick={handleExportXLS} disabled={exporting} style={{ display:"flex", alignItems:"center", gap:6, padding:"9px 18px", borderRadius:"var(--radius-sm)", background:"var(--text-dark)", color:"#fff", border:"none", fontSize:13, fontWeight:700, cursor: exporting?"not-allowed":"pointer", opacity: exporting?.6:1 }}>
-            <IcDoc c="white" s={14}/> {exporting ? "Exportando..." : "Exportar XLS"}
-          </button>
         </div>
       </div>
 
@@ -71,6 +46,8 @@ export default function RhRegistros() {
 
       {loading ? (
         <div style={{ textAlign:"center", padding:60, color:"var(--text-soft)" }}>Cargando registros...</div>
+      ) : logs.length === 0 ? (
+        <div style={{ textAlign:"center", padding:60, color:"var(--text-soft)" }}>No hay registros disponibles</div>
       ) : (
         <div style={{ background:"#fff", borderRadius:"var(--radius-sm)", boxShadow:"var(--shadow-sm)", overflow:"hidden" }}>
           <table style={{ width:"100%", borderCollapse:"collapse" }}>
