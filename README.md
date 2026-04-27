@@ -134,14 +134,4 @@ Cada ruta inyecta un `Layout` global que orquesta la barra lateral (`Sidebar`) y
 
 ---
 
-## 📄 Licencia
 
-![Licencia: Privada](https://img.shields.io/badge/Licencia-No_Comercial-red?style=for-the-badge)
-
-## Propiedad Intelectual
-
-Todo el contenido de este frontend de interfaz gráfica (código fuente, UI/UX, gráficos) está protegido bajo derechos de autor.
-* **Uso permitido:** Despliegue y operación interna dentro del ecosistema de la red hospitalaria.
-* **Prohibiciones:** Se prohíbe la clonación del theme, distribución de sus componentes de diseño, ingeniería inversa o uso comercial paralelo.
-
-> © 2026 **HospTrack Systems / SalubTech**. Todos los derechos reservados.
